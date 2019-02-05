@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700');
+
+@media screen and (min-width: 900px) {
+    #root {
+        width: 800px;
+        height: 800px;
+    }
+    .number-table {
+        border-spacing: 12px;
+    }
+    .number-row {
+        height: 185px
+    }
+    .number-cell {
+        width: 185px;
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    #root {
+        width: 300px;
+        height: 300px;
+    }
+    .number-table {
+        border-spacing: 4px;
+    }
+    .number-row {
+        height: 70px
+    }
+    .number-cell {
+        width: 70px;
+        font-size: 20px;
+    }
+}
+
+html, body {
+    overscroll-behavior-y: contain;
+    background-color: #b8aca0;
+    position: fixed;
+    overflow: hidden;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+
+}
+
+#root {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.number-table {
+    display: table;
+    background-color: #92877d;
+    width: 100%;
+    height: 100%;
+    border-collapse: separate;
+    border-radius: 2%;
+}
+
+.number-row {
+    display: table-row;
+    width: 100%;
+}
+
+.number-cell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 10%;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+}
+
+.num-null {
+    background-color: #9e948a;
+}
+
+.num-2 {
+    background-color: #eee4da;
+}
+
+.num-4 {
+    background-color: #ede0c8;
+}
+
+.num-8 {
+    background-color: #f2b179;
+}
+
+.num-16 {
+    background-color: #f59563;
+}
+
+.num-32 {
+    background-color: #f67c5f;
+}
+
+.num-64 {
+    background-color: #f65e3b;
+}
+
+.num-128 {
+    background-color: #edcf72;
+}
+
+.num-256 {
+    background-color: #edcc61;
+}
+
+.num-512 {
+    background-color: #edc850;
+}
+
+.num-1024 {
+    background-color: #edc53f;
+}
+
+.num-2048 {
+    background-color: #edc22e;
+}
