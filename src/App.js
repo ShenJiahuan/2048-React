@@ -40,8 +40,6 @@ class Grid extends Component {
         var copy = [];
         for (var i = 0; i < original.length; ++i) {
             for (var j = 0; j < original[i].length; ++j) {
-                if (original[i][j] === undefined) continue;
-                if (copy[j] === undefined) copy[j] = [];
                 copy[j][i] = original[i][j];
             }
         }
