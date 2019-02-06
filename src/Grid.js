@@ -57,7 +57,7 @@ class Grid extends Component {
         while (!found) {
             var [row, col] = Grid.getRandom();
             if (this.numbers[row][col] === "") {
-                this.numbers[row][col] = Math.random() > 0.5 ? 4 : 2;
+                this.numbers[row][col] = [Math.random() > 0.5 ? 4 : 2, "new"];
                 found = true;
             }
         }
@@ -90,8 +90,9 @@ class Grid extends Component {
     static merge(numberRow) {
         var isMerged = false;
         for (var j = 0; j <= 2; ++j) {
-            if (numberRow[j] === numberRow[j + 1] && numberRow[j] !== "") {
-                numberRow[j] *= 2;
+            if (numberRow[j] !== "" && numberRow[j + 1] !== "" && numberRow[j][0] === numberRow[j + 1][0]) {
+                numberRow[j][0] *= 2;
+                numberRow[j][1] = "merged";
                 numberRow[j + 1] = "";
                 isMerged = true;
             }
@@ -113,7 +114,18 @@ class Grid extends Component {
         return isChanged;
     }
 
+    resetIsNew() {
+        for (var i = 0; i < 4; ++i) {
+            for (var j = 0; j < 4; ++j) {
+                if (this.numbers[i][j] !== "") {
+                    this.numbers[i][j][1] = "none";
+                }
+            }
+        }
+    }
+
     action(direction) {
+        this.resetIsNew();
         var isChanged;
         if (direction === "up") {
             this.upLeftTranspose();

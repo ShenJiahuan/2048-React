@@ -3,9 +3,19 @@ import './App.css';
 
 class NumberCell extends Component {
     render() {
-        var className = "number-cell num-" + (this.props.number === "" ? "null" : this.props.number);
+        var className = "number-cell num-";
+        if (this.props.number !== "") {
+            className += this.props.number[0];
+            if (this.props.number[1] === "new") {
+                className += " num-new";
+            } else if (this.props.number[1] === "merged") {
+                className += " num-merged";
+            }
+        } else {
+            className += "null";
+        }
         return (
-            <div className={className}>{this.props.number}</div>
+            <div className={className}>{this.props.number[0]}</div>
         );
     }
 }

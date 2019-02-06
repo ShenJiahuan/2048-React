@@ -73,6 +73,7 @@ html, body {
     font-weight: bold;
 }
 
+
 .num-null {
     background-color: #9e948a;
 }
@@ -119,4 +120,46 @@ html, body {
 
 .num-2048 {
     background-color: #edc22e;
+}
+
+.num-new {
+    animation: new 0.3s ease-out normal;
+}
+
+@-webkit-keyframes new {
+    0% {
+        transform: scale(0.2);
+    }
+    80% {
+        transform: scale(1);
+    }
+    90% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.num-merged {
+    animation: merged 0.3s ease-out normal;
+}
+
+@-webkit-keyframes merged {
+    0% {
+        transform: scale(0.9);
+    }
+
+    25% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
 }
