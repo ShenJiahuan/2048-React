@@ -1,38 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700');
 
-@media screen and (min-width: 900px) {
+@media screen and (orientation:portrait) {
     #root {
-        width: 800px;
-        height: 800px;
+        width: 98vw;
+        height: 98vw;
     }
     .number-table {
-        border-spacing: 12px;
+        border-spacing: 2vw;
     }
     .number-row {
-        height: 185px
+        height: 20vw;
     }
     .number-cell {
-        width: 185px;
-        font-size: 60px;
+        width: 22vw;
+        font-size: 8vw;
+    }
+}
+@media screen and (orientation:landscape) {
+    #root {
+        width: 98vh;
+        height: 98vh;
+    }
+    .number-table {
+        border-spacing: 2vh;
+    }
+    .number-row {
+        height: 20vh;
+    }
+    .number-cell {
+        width: 22vh;
+        font-size: 8vh;
     }
 }
 
-@media screen and (max-width: 899px) {
-    #root {
-        width: 300px;
-        height: 300px;
-    }
-    .number-table {
-        border-spacing: 4px;
-    }
-    .number-row {
-        height: 70px
-    }
-    .number-cell {
-        width: 70px;
-        font-size: 20px;
-    }
-}
 
 html, body {
     overscroll-behavior-y: contain;
