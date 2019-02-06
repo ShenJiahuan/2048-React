@@ -129,24 +129,24 @@ class Grid extends Component {
         return isChanged;
     }
 
-    action(direction, step) {
-        if (direction === 1 && step === -1) {
+    action(direction) {
+        if (direction === "up") {
             this.upLeftTranspose();
-        } else if (direction === 1 && step === 1) {
+        } else if (direction === "down") {
             this.upDownTranspose();
             this.upLeftTranspose();
-        } else if (direction === 2 && step === 1) {
+        } else if (direction === "right") {
             this.upLeftTranspose();
             this.upDownTranspose();
             this.upLeftTranspose();
         }
         var isChanged = this.leftMoveAndMerge();
-        if (direction === 1 && step === -1) {
+        if (direction === "up") {
             this.upLeftTranspose();
-        } else if (direction === 1 && step === 1) {
+        } else if (direction === "down") {
             this.upLeftTranspose();
             this.upDownTranspose();
-        } else if (direction === 2 && step === 1) {
+        } else if (direction === "right") {
             this.upLeftTranspose();
             this.upDownTranspose();
             this.upLeftTranspose();
@@ -181,16 +181,16 @@ class Grid extends Component {
         var legalKey = false;
         switch (e.keyCode) {
             case 37:
-                legalKey = this.action(2, -1); // left
+                legalKey = this.action("left");
                 break;
             case 38:
-                legalKey = this.action(1, -1); // up
+                legalKey = this.action("up");
                 break;
             case 39:
-                legalKey = this.action(2, 1); // right
+                legalKey = this.action("right");
                 break;
             case 40:
-                legalKey = this.action(1, 1); // down
+                legalKey = this.action("down");
                 break;
             default:
                 break;
@@ -220,15 +220,15 @@ class Grid extends Component {
             var legalKey = false;
             if (Math.abs(beginX - endX) > Math.abs(beginY - endY)) {
                 if (beginX < endX) {
-                    legalKey = this.action(2, 1);
+                    legalKey = this.action("right");
                 } else {
-                    legalKey = this.action(2, -1);
+                    legalKey = this.action("left");
                 }
             } else {
                 if (beginY < endY) {
-                    legalKey = this.action(1, 1);
+                    legalKey = this.action("down");
                 } else {
-                    legalKey = this.action(1, -1);
+                    legalKey = this.action("up");
                 }
             }
             if (legalKey) {
