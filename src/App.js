@@ -1,26 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-
-class NumberCell extends Component {
-    render() {
-        var className = "number-cell num-" + (this.props.number === "" ? "null" : this.props.number);
-        return (
-            <div className={className}>{this.props.number}</div>
-        );
-    }
-}
-
-class NumberRow extends Component {
-    render() {
-        const numberRow = this.props.numberRow;
-        const numberRowContent = numberRow.map((number) =>
-            <NumberCell key={number.id} number={number}/>
-        );
-        return (
-            <div className="number-row">{numberRowContent}</div>
-        );
-    }
-}
+import NumberRow from './NumberRow'
 
 class Grid extends Component {
     constructor(props) {
