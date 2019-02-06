@@ -36,7 +36,8 @@ class Grid extends Component {
         this.init();
     }
 
-    static upLeftTranspose(original) {
+    upLeftTranspose() {
+        var original = this.state.numbers;
         var copy = Array(original[0].length);
         for (var k = 0; k < original[0].length; ++k) {
             copy[k] = Array(original.length);
@@ -46,15 +47,16 @@ class Grid extends Component {
                 copy[j][i] = original[i][j];
             }
         }
-        return copy;
+        this.setState({numbers: copy});
     }
 
-    static upDownTranspose(original) {
+    upDownTranspose() {
+        var original = this.state.numbers;
         var copy = Array(original.length);
         for (var i = 0; i < original.length; ++i) {
             copy[i] = original[original.length - i - 1];
         }
-        return copy;
+        this.setState({numbers: copy});
     }
 
     static getRandom() {
@@ -111,17 +113,17 @@ class Grid extends Component {
 
     action(direction, step) {
         var isChanged = false;
-        var numbers = this.state.numbers;
         if (direction === 1 && step === -1) {
-            numbers = Grid.upLeftTranspose(numbers);
+            this.upLeftTranspose();
         } else if (direction === 1 && step === 1) {
-            numbers = Grid.upDownTranspose(numbers);
-            numbers = Grid.upLeftTranspose(numbers);
+            this.upDownTranspose();
+            this.upLeftTranspose();
         } else if (direction === 2 && step === 1) {
-            numbers = Grid.upLeftTranspose(numbers);
-            numbers = Grid.upDownTranspose(numbers);
-            numbers = Grid.upLeftTranspose(numbers);
+            this.upLeftTranspose();
+            this.upDownTranspose();
+            this.upLeftTranspose();
         }
+        var numbers = this.state.numbers;
         for (var i = 0; i < 4; ++i) {
             var action1 = Grid.move(numbers[i]);
             numbers[i] = action1[0];
@@ -131,17 +133,17 @@ class Grid extends Component {
             numbers[i] = action3[0];
             isChanged = isChanged || action1[1] || action2[1] || action3[1];
         }
-        if (direction === 1 && step === -1) {
-            numbers = Grid.upLeftTranspose(numbers);
-        } else if (direction === 1 && step === 1) {
-            numbers = Grid.upLeftTranspose(numbers);
-            numbers = Grid.upDownTranspose(numbers);
-        } else if (direction === 2 && step === 1) {
-            numbers = Grid.upLeftTranspose(numbers);
-            numbers = Grid.upDownTranspose(numbers);
-            numbers = Grid.upLeftTranspose(numbers);
-        }
         this.setState({numbers: numbers});
+        if (direction === 1 && step === -1) {
+            this.upLeftTranspose();
+        } else if (direction === 1 && step === 1) {
+            this.upLeftTranspose();
+            this.upDownTranspose();
+        } else if (direction === 2 && step === 1) {
+            this.upLeftTranspose();
+            this.upDownTranspose();
+            this.upLeftTranspose();
+        }
         return isChanged;
     }
 
