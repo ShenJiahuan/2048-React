@@ -62,14 +62,17 @@ class Grid extends Component {
         return [row, col];
     }
 
-    exist(row, col) {
+    addValue() {
         var numbers = this.state.numbers;
-        return numbers[row][col] !== "";
-    }
-
-    addValue(row, col) {
-        var numbers = this.state.numbers;
-        numbers[row][col] = Math.random() > 0.5 ? 4 : 2;
+        while (true) {
+            var pos = Grid.getRandom();
+            var row = pos[0];
+            var col = pos[1];
+            if (numbers[row][col] === "") {
+                numbers[row][col] = Math.random() > 0.5 ? 4 : 2;
+                break;
+            }
+        }
         this.setState({numbers: numbers});
     }
 
@@ -173,15 +176,7 @@ class Grid extends Component {
                 break;
         }
         if (legalKey) {
-            while (true) {
-                var pos = Grid.getRandom();
-                var row = pos[0];
-                var col = pos[1];
-                if (!this.exist(row, col)) {
-                    this.addValue(row, col);
-                    break;
-                }
-            }
+            this.addValue();
         }
         e.preventDefault();
     }
@@ -231,15 +226,7 @@ class Grid extends Component {
                 }
             }
             if (legalKey) {
-                while (true) {
-                    var pos = Grid.getRandom();
-                    var row = pos[0];
-                    var col = pos[1];
-                    if (!this.exist(row, col)) {
-                        this.addValue(row, col);
-                        break;
-                    }
-                }
+                this.addValue();
             }
         }
         this.setState({enableSwipe: false});
@@ -253,15 +240,8 @@ class Grid extends Component {
 
 
     init() {
-        var count = 0;
-        while (count < 2) {
-            var pos = Grid.getRandom();
-            var row = pos[0];
-            var col = pos[1];
-            if (!this.exist(row, col)) {
-                count++;
-                this.addValue(row, col);
-            }
+        for (var i = 0; i < 2; ++i) {
+            this.addValue();
         }
     }
 
