@@ -146,6 +146,18 @@ class Grid extends Component {
         return isChanged;
     }
 
+    static getPosDuringEvent(e) {
+        var X, Y;
+        if (e.touches !== undefined) {
+            X = e.touches[0].screenX;
+            Y = e.touches[0].screenY;
+        } else {
+            X = e.screenX;
+            Y = e.screenY;
+        }
+        return [X, Y];
+    }
+
     componentDidMount() {
         document.addEventListener("keydown", this.onKeyPressed.bind(this));
         document.addEventListener("touchstart", this.onTouchStart.bind(this));
@@ -183,26 +195,14 @@ class Grid extends Component {
 
     onTouchStart(e) {
         var X, Y;
-        if (e.touches !== undefined) {
-            X = e.touches[0].screenX;
-            Y = e.touches[0].screenY;
-        } else {
-            X = e.screenX;
-            Y = e.screenY;
-        }
+        [X, Y] = Grid.getPosDuringEvent(e);
         this.setState({beginX: X, beginY: Y, endX: X, endY: Y, enableSwipe: true});
         e.preventDefault();
     }
 
     onTouchMove(e) {
         var X, Y;
-        if (e.touches !== undefined) {
-            X = e.touches[0].screenX;
-            Y = e.touches[0].screenY;
-        } else {
-            X = e.screenX;
-            Y = e.screenY;
-        }
+        [X, Y] = Grid.getPosDuringEvent(e);
         this.setState({endX: X, endY: Y});
         e.preventDefault();
     }
