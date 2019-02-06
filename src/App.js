@@ -167,14 +167,19 @@ class Grid extends Component {
     }
 
     componentDidMount() {
-        document.addEventListener("keydown", this.onKeyPressed.bind(this));
-        document.addEventListener("touchstart", this.onTouchStart.bind(this));
-        document.addEventListener("mousedown", this.onTouchStart.bind(this));
-        document.addEventListener("touchmove", this.onTouchMove.bind(this));
-        document.addEventListener("mousemove", this.onTouchMove.bind(this));
-        document.addEventListener("touchend", this.onTouchEnd.bind(this));
-        document.addEventListener("mouseup", this.onTouchEnd.bind(this));
-        document.addEventListener("gesturestart", this.onGestureStart.bind(this));
+        var events = {
+            "keydown": this.onKeyPressed,
+            "touchstart": this.onTouchStart,
+            "mousedown": this.onTouchStart,
+            "touchmove": this.onTouchMove,
+            "touchend": this.onTouchEnd,
+            "mouseup": this.onTouchEnd,
+            "gesturestart": this.onGestureStart,
+        };
+
+        for (var e in events) {
+            document.addEventListener(e, events[e].bind(this));
+        }
     }
 
     onKeyPressed(e) {
