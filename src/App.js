@@ -219,22 +219,14 @@ class Grid extends Component {
     }
 
     onTouchEnd(e) {
-        var beginX = this.state.beginX, beginY = this.state.beginY;
-        var endX = this.state.endX, endY = this.state.endY;
+        var [beginX, beginY] = [this.state.beginX, this.state.beginY];
+        var [endX, endY] = [this.state.endX, this.state.endY];
         if (Math.pow(endX - beginX, 2) + Math.pow(endY - beginY, 2) > 10 && this.state.enableSwipe) {
             var legalKey = false;
             if (Math.abs(beginX - endX) > Math.abs(beginY - endY)) {
-                if (beginX < endX) {
-                    legalKey = this.action("right");
-                } else {
-                    legalKey = this.action("left");
-                }
+                legalKey = this.action(beginX < endX ? "right" : "left");
             } else {
-                if (beginY < endY) {
-                    legalKey = this.action("down");
-                } else {
-                    legalKey = this.action("up");
-                }
+                legalKey = this.action(beginY < endY ? "down" : "up");
             }
             if (legalKey) {
                 this.addValue();
