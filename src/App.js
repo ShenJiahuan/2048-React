@@ -65,9 +65,7 @@ class Grid extends Component {
     addValue() {
         var numbers = this.state.numbers;
         while (true) {
-            var pos = Grid.getRandom();
-            var row = pos[0];
-            var col = pos[1];
+            var [row, col] = Grid.getRandom();
             if (numbers[row][col] === "") {
                 numbers[row][col] = Math.random() > 0.5 ? 4 : 2;
                 break;
@@ -194,15 +192,13 @@ class Grid extends Component {
     }
 
     onTouchStart(e) {
-        var X, Y;
-        [X, Y] = Grid.getPosDuringEvent(e);
+        var [X, Y] = Grid.getPosDuringEvent(e);
         this.setState({beginX: X, beginY: Y, endX: X, endY: Y, enableSwipe: true});
         e.preventDefault();
     }
 
     onTouchMove(e) {
-        var X, Y;
-        [X, Y] = Grid.getPosDuringEvent(e);
+        var [X, Y] = Grid.getPosDuringEvent(e);
         this.setState({endX: X, endY: Y});
         e.preventDefault();
     }
