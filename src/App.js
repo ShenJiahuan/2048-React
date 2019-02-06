@@ -75,15 +75,21 @@ class Grid extends Component {
 
     static move(numberRow) {
         var isMoved = false;
-        for (var j = 0; j < 3; ++j) {
+        var jInc = true;
+        for (var j = 0; j < 3;) {
+            jInc = true;
             if (numberRow[j] === "") {
                 for (var k = j; k < 3; ++k) {
                     numberRow[k] = numberRow[k + 1];
                     if (numberRow[k]) {
                         isMoved = true;
+                        jInc = false;
                     }
                 }
                 numberRow[3] = "";
+            }
+            if (jInc) {
+                ++j;
             }
         }
         return [numberRow, isMoved];
