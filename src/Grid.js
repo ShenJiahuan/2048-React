@@ -13,7 +13,9 @@ class Grid extends Component {
             }
         }
         this.state = {numbers: numbers, beginX: 0, beginY: 0, endX: 0, endY: 0, enableSwipe: false};
-        this.init();
+        for (var k = 0; k < 2; ++k) {
+            this.addValue();
+        }
     }
 
     upLeftTranspose() {
@@ -219,12 +221,6 @@ class Grid extends Component {
     onGestureStart(e) {
         this.setState({enableSwipe: false});
         e.preventDefault();
-    }
-
-    init() {
-        for (var i = 0; i < 2; ++i) {
-            this.addValue();
-        }
     }
 
     render() {
