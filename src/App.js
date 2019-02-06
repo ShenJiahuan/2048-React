@@ -28,6 +28,7 @@ class App extends Component {
             "mousedown": this.onTouchStart,
             "touchmove": this.onTouchMove,
             "touchend": this.onTouchEnd,
+            "mousemove": this.onTouchMove,
             "mouseup": this.onTouchEnd,
             "gesturestart": this.onGestureStart,
         };
