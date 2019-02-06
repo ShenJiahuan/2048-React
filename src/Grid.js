@@ -40,6 +40,12 @@ class Grid extends Component {
         this.numbers = copy;
     }
 
+    leftRightTranspose() {
+        this.upLeftTranspose();
+        this.upDownTranspose();
+        this.upLeftTranspose();
+    }
+
     static getRandom() {
         var row = Math.floor(Math.random() * 4);
         var col = Math.floor(Math.random() * 4);
@@ -108,26 +114,23 @@ class Grid extends Component {
     }
 
     action(direction) {
+        var isChanged;
         if (direction === "up") {
+            this.upLeftTranspose();
+            isChanged = this.leftMoveAndMerge();
             this.upLeftTranspose();
         } else if (direction === "down") {
             this.upDownTranspose();
             this.upLeftTranspose();
-        } else if (direction === "right") {
-            this.upLeftTranspose();
-            this.upDownTranspose();
-            this.upLeftTranspose();
-        }
-        var isChanged = this.leftMoveAndMerge();
-        if (direction === "up") {
-            this.upLeftTranspose();
-        } else if (direction === "down") {
+            isChanged = this.leftMoveAndMerge();
             this.upLeftTranspose();
             this.upDownTranspose();
         } else if (direction === "right") {
-            this.upLeftTranspose();
-            this.upDownTranspose();
-            this.upLeftTranspose();
+            this.leftRightTranspose();
+            isChanged = this.leftMoveAndMerge();
+            this.leftRightTranspose();
+        } else {
+            isChanged = this.leftMoveAndMerge();
         }
         return isChanged;
     }
