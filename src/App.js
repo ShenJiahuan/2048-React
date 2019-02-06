@@ -37,7 +37,10 @@ class Grid extends Component {
     }
 
     static upLeftTranspose(original) {
-        var copy = [];
+        var copy = Array(original[0].length);
+        for (var k = 0; k < original[0].length; ++k) {
+            copy[k] = Array(original.length);
+        }
         for (var i = 0; i < original.length; ++i) {
             for (var j = 0; j < original[i].length; ++j) {
                 copy[j][i] = original[i][j];
