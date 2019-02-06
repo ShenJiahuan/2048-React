@@ -113,18 +113,8 @@ class Grid extends Component {
         return [numberRow, isMerged];
     }
 
-    action(direction, step) {
+    leftMoveAndMerge() {
         var isChanged = false;
-        if (direction === 1 && step === -1) {
-            this.upLeftTranspose();
-        } else if (direction === 1 && step === 1) {
-            this.upDownTranspose();
-            this.upLeftTranspose();
-        } else if (direction === 2 && step === 1) {
-            this.upLeftTranspose();
-            this.upDownTranspose();
-            this.upLeftTranspose();
-        }
         var numbers = this.state.numbers;
         for (var i = 0; i < 4; ++i) {
             var action1 = Grid.move(numbers[i]);
@@ -136,6 +126,21 @@ class Grid extends Component {
             isChanged = isChanged || action1[1] || action2[1] || action3[1];
         }
         this.setState({numbers: numbers});
+        return isChanged;
+    }
+
+    action(direction, step) {
+        if (direction === 1 && step === -1) {
+            this.upLeftTranspose();
+        } else if (direction === 1 && step === 1) {
+            this.upDownTranspose();
+            this.upLeftTranspose();
+        } else if (direction === 2 && step === 1) {
+            this.upLeftTranspose();
+            this.upDownTranspose();
+            this.upLeftTranspose();
+        }
+        var isChanged = this.leftMoveAndMerge();
         if (direction === 1 && step === -1) {
             this.upLeftTranspose();
         } else if (direction === 1 && step === 1) {
