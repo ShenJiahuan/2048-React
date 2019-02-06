@@ -47,11 +47,12 @@ class Grid extends Component {
     }
 
     addValue() {
-        while (true) {
+        var found = false;
+        while (!found) {
             var [row, col] = Grid.getRandom();
             if (this.numbers[row][col] === "") {
                 this.numbers[row][col] = Math.random() > 0.5 ? 4 : 2;
-                break;
+                found = true;
             }
         }
     }
