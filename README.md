@@ -1,3 +1,5 @@
+[![codebeat badge](https://codebeat.co/badges/95aaeb6b-446a-4c1e-87b2-c7b2092a58ab)](https://codebeat.co/projects/github-com-shenjiahuan-2048-react-master)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
