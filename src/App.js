@@ -42,21 +42,10 @@ class App extends Component {
     onKeyPressed(e) {
         let legalKey = false;
         let grid = this.state.grid;
-        switch (e.keyCode) {
-            case 37:
-                legalKey = grid.action("left");
-                break;
-            case 38:
-                legalKey = grid.action("up");
-                break;
-            case 39:
-                legalKey = grid.action("right");
-                break;
-            case 40:
-                legalKey = grid.action("down");
-                break;
-            default:
-                break;
+        const actionMap = {37: "left", 38: "up", 39: "right", 40: "down"};
+        if (e.keyCode >= 37 && e.keyCode <= 40) {
+            let action = actionMap[e.keyCode];
+            legalKey = grid.action(action);
         }
         if (legalKey) {
             grid.addValue();
