@@ -12,6 +12,7 @@ class Grid extends Component {
             }
         }
         this.numbers = numbers;
+        this.score = 0;
         for (var k = 0; k < 2; ++k) {
             this.addValue();
         }
@@ -96,6 +97,7 @@ class Grid extends Component {
                 this.numbers[rowNum][j][1] = "merged";
                 this.numbers[rowNum][j + 1] = "";
                 isMerged = true;
+                this.score += this.numbers[rowNum][j][0];
             }
         }
         return isMerged;
