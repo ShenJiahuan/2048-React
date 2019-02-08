@@ -63,53 +63,51 @@ class Grid extends Component {
         }
     }
 
-    static move(numberRow) {
+    move(rowNum) {
         var isMoved = false;
         var jInc = true;
         for (var j = 0; j < 3;) {
-            if (numberRow[j] !== "") {
+            if (this.numbers[rowNum][j] !== "") {
                 ++j;
                 continue;
             }
             jInc = true;
             for (var k = j; k < 3; ++k) {
-                numberRow[k] = numberRow[k + 1];
-                if (numberRow[k]) {
+                this.numbers[rowNum][k] = this.numbers[rowNum][k + 1];
+                if (this.numbers[rowNum][k]) {
                     isMoved = true;
                     jInc = false;
                 }
             }
-            numberRow[3] = "";
+            this.numbers[rowNum][3] = "";
             if (jInc) {
                 ++j;
             }
         }
-        return [numberRow, isMoved];
+        return isMoved;
     }
 
-    static merge(numberRow) {
+    merge(rowNum) {
         var isMerged = false;
         for (var j = 0; j <= 2; ++j) {
-            if (numberRow[j] !== "" && numberRow[j + 1] !== "" && numberRow[j][0] === numberRow[j + 1][0]) {
-                numberRow[j][0] *= 2;
-                numberRow[j][1] = "merged";
-                numberRow[j + 1] = "";
+            if (this.numbers[rowNum][j] !== "" && this.numbers[rowNum][j + 1] !== "" &&
+                this.numbers[rowNum][j][0] === this.numbers[rowNum][j + 1][0]) {
+                this.numbers[rowNum][j][0] *= 2;
+                this.numbers[rowNum][j][1] = "merged";
+                this.numbers[rowNum][j + 1] = "";
                 isMerged = true;
             }
         }
-        return [numberRow, isMerged];
+        return isMerged;
     }
 
     leftMoveAndMerge() {
         var isChanged = false;
         for (var i = 0; i < 4; ++i) {
-            var action1 = Grid.move(this.numbers[i]);
-            this.numbers[i] = action1[0];
-            var action2 = Grid.merge(this.numbers[i]);
-            this.numbers[i] = action2[0];
-            var action3 = Grid.move(this.numbers[i]);
-            this.numbers[i] = action3[0];
-            isChanged = isChanged || action1[1] || action2[1] || action3[1];
+            var action1 = this.move(i);
+            var action2 = this.merge(i);
+            var action3 = this.move(i);
+            isChanged = isChanged || action1 || action2 || action3;
         }
         return isChanged;
     }
