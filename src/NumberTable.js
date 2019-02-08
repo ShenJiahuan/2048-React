@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import NumberRow from './NumberRow'
+import NumberRow from './NumberRow';
 
 class NumberTable extends Component {
     render() {
