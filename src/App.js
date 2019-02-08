@@ -73,10 +73,14 @@ class App extends Component {
         let [endX, endY] = [this.state.endX, this.state.endY];
         if (Math.pow(endX - beginX, 2) + Math.pow(endY - beginY, 2) > 10 && this.state.enableSwipe) {
             let legalKey = false;
+            let action = "";
             if (Math.abs(beginX - endX) > Math.abs(beginY - endY)) {
-                legalKey = grid.action(beginX < endX ? "right" : "left");
+                action = beginX < endX ? "right" : "left";
             } else {
-                legalKey = grid.action(beginY < endY ? "down" : "up");
+                action = beginY < endY ? "down" : "up";
+            }
+            if (action) {
+                legalKey = grid.action(action);
             }
             if (legalKey) {
                 grid.addValue();
