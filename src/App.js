@@ -11,7 +11,7 @@ class App extends Component {
     }
 
     static getPosDuringEvent(e) {
-        var X, Y;
+        let X, Y;
         if (e.touches !== undefined) {
             X = e.touches[0].screenX;
             Y = e.touches[0].screenY;
@@ -23,7 +23,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        var events = {
+        let events = {
             "keydown": this.onKeyPressed,
             "touchstart": this.onTouchStart,
             "mousedown": this.onTouchStart,
@@ -34,14 +34,14 @@ class App extends Component {
             "gesturestart": this.onGestureStart,
         };
 
-        for (var e in events) {
+        for (let e in events) {
             document.addEventListener(e, events[e].bind(this));
         }
     }
 
     onKeyPressed(e) {
-        var legalKey = false;
-        var grid = this.state.grid;
+        let legalKey = false;
+        let grid = this.state.grid;
         switch (e.keyCode) {
             case 37:
                 legalKey = grid.action("left");
@@ -66,24 +66,24 @@ class App extends Component {
     }
 
     onTouchStart(e) {
-        var [X, Y] = App.getPosDuringEvent(e);
+        let [X, Y] = App.getPosDuringEvent(e);
         this.setState({beginX: X, beginY: Y, endX: X, endY: Y, enableSwipe: true});
         e.preventDefault();
     }
 
     onTouchMove(e) {
-        var [X, Y] = App.getPosDuringEvent(e);
+        let [X, Y] = App.getPosDuringEvent(e);
         this.setState({endX: X, endY: Y});
         this.setState({endX: X, endY: Y});
         e.preventDefault();
     }
 
     onTouchEnd(e) {
-        var grid = this.state.grid;
-        var [beginX, beginY] = [this.state.beginX, this.state.beginY];
-        var [endX, endY] = [this.state.endX, this.state.endY];
+        let grid = this.state.grid;
+        let [beginX, beginY] = [this.state.beginX, this.state.beginY];
+        let [endX, endY] = [this.state.endX, this.state.endY];
         if (Math.pow(endX - beginX, 2) + Math.pow(endY - beginY, 2) > 10 && this.state.enableSwipe) {
-            var legalKey = false;
+            let legalKey = false;
             if (Math.abs(beginX - endX) > Math.abs(beginY - endY)) {
                 legalKey = grid.action(beginX < endX ? "right" : "left");
             } else {

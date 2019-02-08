@@ -4,28 +4,28 @@ import "./App.css";
 class Grid extends Component {
     constructor(props) {
         super(props);
-        var numbers = new Array(4);
-        for (var i = 0; i < 4; ++i) {
+        let numbers = new Array(4);
+        for (let i = 0; i < 4; ++i) {
             numbers[i] = new Array(4);
-            for (var j = 0; j < 4; ++j) {
+            for (let j = 0; j < 4; ++j) {
                 numbers[i][j] = "";
             }
         }
         this.numbers = numbers;
         this.score = 0;
-        for (var k = 0; k < 2; ++k) {
+        for (let i = 0; i < 2; ++i) {
             this.addValue();
         }
     }
 
     upLeftTranspose() {
-        var original = this.numbers;
-        var copy = Array(original[0].length);
-        for (var k = 0; k < original[0].length; ++k) {
-            copy[k] = Array(original.length);
+        let original = this.numbers;
+        let copy = Array(original[0].length);
+        for (let i = 0; i < original[0].length; ++i) {
+            copy[i] = Array(original.length);
         }
-        for (var i = 0; i < original.length; ++i) {
-            for (var j = 0; j < original[i].length; ++j) {
+        for (let i = 0; i < original.length; ++i) {
+            for (let j = 0; j < original[i].length; ++j) {
                 copy[j][i] = original[i][j];
             }
         }
@@ -33,9 +33,9 @@ class Grid extends Component {
     }
 
     upDownTranspose() {
-        var original = this.numbers;
-        var copy = Array(original.length);
-        for (var i = 0; i < original.length; ++i) {
+        let original = this.numbers;
+        let copy = Array(original.length);
+        for (let i = 0; i < original.length; ++i) {
             copy[i] = original[original.length - i - 1];
         }
         this.numbers = copy;
@@ -48,15 +48,15 @@ class Grid extends Component {
     }
 
     static getRandom() {
-        var row = Math.floor(Math.random() * 4);
-        var col = Math.floor(Math.random() * 4);
+        let row = Math.floor(Math.random() * 4);
+        let col = Math.floor(Math.random() * 4);
         return [row, col];
     }
 
     addValue() {
-        var found = false;
+        let found = false;
         while (!found) {
-            var [row, col] = Grid.getRandom();
+            let [row, col] = Grid.getRandom();
             if (this.numbers[row][col] === "") {
                 this.numbers[row][col] = [Math.random() > 0.5 ? 4 : 2, "new"];
                 found = true;
@@ -65,15 +65,15 @@ class Grid extends Component {
     }
 
     move(rowNum) {
-        var isMoved = false;
-        var jInc = true;
-        for (var j = 0; j < 3;) {
+        let isMoved = false;
+        let jInc = true;
+        for (let j = 0; j < 3;) {
             if (this.numbers[rowNum][j] !== "") {
                 ++j;
                 continue;
             }
             jInc = true;
-            for (var k = j; k < 3; ++k) {
+            for (let k = j; k < 3; ++k) {
                 this.numbers[rowNum][k] = this.numbers[rowNum][k + 1];
                 if (this.numbers[rowNum][k]) {
                     isMoved = true;
@@ -89,8 +89,8 @@ class Grid extends Component {
     }
 
     merge(rowNum) {
-        var isMerged = false;
-        for (var j = 0; j <= 2; ++j) {
+        let isMerged = false;
+        for (let j = 0; j <= 2; ++j) {
             if (this.numbers[rowNum][j] !== "" && this.numbers[rowNum][j + 1] !== "" &&
                 this.numbers[rowNum][j][0] === this.numbers[rowNum][j + 1][0]) {
                 this.numbers[rowNum][j][0] *= 2;
@@ -104,19 +104,19 @@ class Grid extends Component {
     }
 
     leftMoveAndMerge() {
-        var isChanged = false;
-        for (var i = 0; i < 4; ++i) {
-            var action1 = this.move(i);
-            var action2 = this.merge(i);
-            var action3 = this.move(i);
+        let isChanged = false;
+        for (let i = 0; i < 4; ++i) {
+            let action1 = this.move(i);
+            let action2 = this.merge(i);
+            let action3 = this.move(i);
             isChanged = isChanged || action1 || action2 || action3;
         }
         return isChanged;
     }
 
     resetIsNew() {
-        for (var i = 0; i < 4; ++i) {
-            for (var j = 0; j < 4; ++j) {
+        for (let i = 0; i < 4; ++i) {
+            for (let j = 0; j < 4; ++j) {
                 if (this.numbers[i][j] !== "") {
                     this.numbers[i][j][1] = "none";
                 }
@@ -126,7 +126,7 @@ class Grid extends Component {
 
     action(direction) {
         this.resetIsNew();
-        var isChanged;
+        let isChanged;
         switch (direction) {
             case "up":
                 this.upLeftTranspose();
