@@ -12,7 +12,7 @@ class App extends Component {
 
     static getPosDuringEvent(e) {
         let X, Y;
-        if (e.touches !== undefined) {
+        if (e.touches) {
             X = e.touches[0].screenX;
             Y = e.touches[0].screenY;
         } else {
