@@ -2,34 +2,46 @@
 
 @media screen and (orientation:portrait) {
     #root {
-        width: 98vw;
-        height: 98vw;
+        width: 74vw;
+        height: 100vw;
     }
     .number-table {
         border-spacing: 2vw;
     }
     .number-row {
-        height: 22vw;
+        height: 16vw;
     }
     .number-cell {
-        width: 22vw;
+        width: 16vw;
         font-size: 8vw;
+    }
+    #score-board {
+        width: 16vw;
+        height: 12vw;
+        font-size: 4vw;
+        margin: 2vw;
     }
 }
 @media screen and (orientation:landscape) {
     #root {
-        width: 98vh;
-        height: 98vh;
+        width: 74vh;
+        height: 100vh;
     }
     .number-table {
         border-spacing: 2vh;
     }
     .number-row {
-        height: 22vh;
+        height: 16vh;
     }
     .number-cell {
-        width: 22vh;
+        width: 16vh;
         font-size: 8vh;
+    }
+    #score-board {
+        width: 16vh;
+        height: 12vh;
+        font-size: 4vh;
+        margin: 2vh;
     }
 }
 
@@ -42,7 +54,7 @@ html, body {
     margin: 0 auto;
     left: 0;
     right: 0;
-
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 #root {
@@ -69,7 +81,6 @@ html, body {
     vertical-align: middle;
     text-align: center;
     border-radius: 10%;
-    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;
 }
 
@@ -162,4 +173,21 @@ html, body {
         transform: scale(1);
     }
 
+}
+
+#score-board {
+    text-align: center;
+    background-color: #9e948a;
+    border-radius: 10%;
+    font-weight: bold;
+}
+
+#score-info {
+    width: 100%;
+    height: 50%;
+}
+
+#score-value {
+    width: 100%;
+    height: 50%;
 }

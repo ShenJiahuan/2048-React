@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Grid from './Grid'
 import NumberTable from './NumberTable'
+import Score from "./Score";
 
 class App extends Component {
     constructor(props) {
@@ -103,7 +104,10 @@ class App extends Component {
 
     render() {
         return (
-            <NumberTable numbers={this.state.grid.numbers}/>
+            <div>
+                <Score score={this.state.grid.score}/>
+                <NumberTable numbers={this.state.grid.numbers}/>
+            </div>
         );
     }
 }
