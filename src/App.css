@@ -13,13 +13,29 @@
     }
     .number-cell {
         width: 16vw;
-        font-size: 8vw;
     }
     #score-board {
         width: 16vw;
         height: 12vw;
-        font-size: 4vw;
         margin: 2vw;
+    }
+    #score-info {
+        font-size: 3vw;
+    }
+    #score-value {
+        font-size: 4vw;
+    }
+    .num-2, .num-4, .num-8 {
+        font-size: 10vw;
+    }
+    .num-16, .num-32, .num-64 {
+        font-size: 8vw;
+    }
+    .num-128, .num-256, .num-512 {
+        font-size: 6vw;
+    }
+    .num-1024, .num-2048 {
+        font-size: 4vw;
     }
 }
 @media screen and (orientation:landscape) {
@@ -35,20 +51,36 @@
     }
     .number-cell {
         width: 16vh;
-        font-size: 8vh;
     }
     #score-board {
         width: 16vh;
         height: 12vh;
-        font-size: 4vh;
         margin: 2vh;
+    }
+    #score-info {
+        font-size: 3vh;
+    }
+    #score-value {
+        font-size: 4vh;
+    }
+    .num-2, .num-4, .num-8 {
+        font-size: 10vh;
+    }
+    .num-16, .num-32, .num-64 {
+        font-size: 8vh;
+    }
+    .num-128, .num-256, .num-512 {
+        font-size: 6vh;
+    }
+    .num-1024, .num-2048 {
+        font-size: 4vh;
     }
 }
 
 
 html, body {
     overscroll-behavior-y: contain;
-    background-color: #b8aca0;
+    background-color: rgb(249, 247, 235);
     position: fixed;
     overflow: hidden;
     margin: 0 auto;
@@ -64,7 +96,7 @@ html, body {
 
 .number-table {
     display: table;
-    background-color: #92877d;
+    background-color: rgb(173, 157, 143);
     width: 100%;
     height: 100%;
     border-collapse: separate;
@@ -86,51 +118,62 @@ html, body {
 
 
 .num-null {
-    background-color: #9e948a;
+    background-color: rgb(193, 180, 164);
 }
 
 .num-2 {
-    background-color: #eee4da;
+    color: rgb(100, 91, 82);
+    background-color: rgb(233, 221, 209);
 }
 
 .num-4 {
-    background-color: #ede0c8;
+    color: rgb(100, 91, 82);
+    background-color: rgb(232, 217, 189);
 }
 
 .num-8 {
-    background-color: #f2b179;
+    color: rgb(248, 244, 238);
+    background-color: rgb(237, 161, 102);
 }
 
 .num-16 {
-    background-color: #f59563;
+    color: rgb(248, 244, 238);
+    background-color: rgb(240, 129, 80);
 }
 
 .num-32 {
-    background-color: #f67c5f;
+    color: rgb(248, 244, 238);
+    background-color: rgb(241, 101, 77);
 }
 
 .num-64 {
-    background-color: #f65e3b;
+    color: rgb(248, 244, 238);
+    background-color: rgb(241, 71, 45);
 }
 
 .num-128 {
-    background-color: #edcf72;
+    color: rgb(248, 244, 238);
+    background-color: rgb(232, 198, 95);
 }
 
 .num-256 {
-    background-color: #edcc61;
+    color: rgb(248, 244, 238);
+    background-color: rgb(231, 194, 80);
 }
 
 .num-512 {
-    background-color: #edc850;
+    color: rgb(248, 244, 238);
+    background-color: rgb(232, 191, 64);
 }
 
 .num-1024 {
-    background-color: #edc53f;
+    color: rgb(248, 244, 238);
+    background-color: rgb(231, 187, 49);
 }
 
 .num-2048 {
-    background-color: #edc22e;
+    color: rgb(248, 244, 238);
+    background-color: rgb(232, 183, 36);
 }
 
 .num-new {
@@ -176,18 +219,30 @@ html, body {
 }
 
 #score-board {
+    display: table;
     text-align: center;
-    background-color: #9e948a;
+
+    background-color: rgb(173, 157, 143);
     border-radius: 10%;
     font-weight: bold;
 }
 
 #score-info {
+    display: table-row;
     width: 100%;
-    height: 50%;
+    height: 40%;
+    color: rgb(233, 221, 209);
 }
 
 #score-value {
+    display: table-row;
     width: 100%;
-    height: 50%;
+    height: 60%;
+    line-height: 100%;
+    color: rgb(255, 255, 255);
+}
+
+#score-info > div, #score-value > div {
+    display: table-cell;
+    vertical-align: middle;
 }
