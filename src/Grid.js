@@ -151,8 +151,27 @@ class Grid extends Component {
             default:
                 break;
         }
+        console.log(this.alive());
         return isChanged;
     }
+
+    alive() {
+        for (let i = 0; i < 4; ++i) {
+            for (let j = 0; j < 4; ++j) {
+                if (this.numbers[i][j] === "") {
+                    return true;
+                }
+                if (i < 3 && this.numbers[i + 1][j] !== "" && this.numbers[i][j][0] === this.numbers[i + 1][j][0]) {
+                    return true;
+                }
+                if (j < 3 && this.numbers[i][j + 1] !== "" && this.numbers[i][j][0] === this.numbers[i][j + 1][0]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     render() {
         return null;
     }
