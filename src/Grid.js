@@ -115,13 +115,14 @@ class Grid extends Component {
     }
 
     resetIsNew() {
-        for (let i = 0; i < 4; ++i) {
-            for (let j = 0; j < 4; ++j) {
-                if (this.numbers[i][j] !== "") {
-                    this.numbers[i][j][1] = "none";
+        this.numbers.map((numberRow) => {
+            return numberRow.map((number) => {
+                if (number !== "") {
+                    number[1] = "none";
                 }
-            }
-        }
+                return number;
+            })
+        })
     }
 
     transpose(direction, reset) {
