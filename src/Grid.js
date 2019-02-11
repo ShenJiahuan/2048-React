@@ -1,5 +1,6 @@
 import {Component} from "react";
 import "./App.css";
+import * as Transpose from "./Transpose"
 
 class Grid extends Component {
     constructor(props) {
@@ -16,35 +17,6 @@ class Grid extends Component {
         for (let i = 0; i < 2; ++i) {
             this.addValue();
         }
-    }
-
-    upLeftTranspose() {
-        let original = this.numbers;
-        let copy = Array(original[0].length);
-        for (let i = 0; i < original[0].length; ++i) {
-            copy[i] = Array(original.length);
-        }
-        for (let i = 0; i < original.length; ++i) {
-            for (let j = 0; j < original[i].length; ++j) {
-                copy[j][i] = original[i][j];
-            }
-        }
-        this.numbers = copy;
-    }
-
-    upDownTranspose() {
-        let original = this.numbers;
-        let copy = Array(original.length);
-        for (let i = 0; i < original.length; ++i) {
-            copy[i] = original[original.length - i - 1];
-        }
-        this.numbers = copy;
-    }
-
-    leftRightTranspose() {
-        this.upLeftTranspose();
-        this.upDownTranspose();
-        this.upLeftTranspose();
     }
 
     static getRandom() {
@@ -125,19 +97,19 @@ class Grid extends Component {
     transpose(direction, reset) {
         switch (direction) {
             case "up":
-                this.upLeftTranspose();
+                this.numbers = Transpose.upLeftTranspose(this.numbers);
                 break;
             case "down":
                 if (reset) {
-                    this.upLeftTranspose();
-                    this.upDownTranspose();
+                    this.numbers = Transpose.upLeftTranspose(this.numbers);
+                    this.numbers = Transpose.upDownTranspose(this.numbers);
                 } else {
-                    this.upDownTranspose();
-                    this.upLeftTranspose();
+                    this.numbers = Transpose.upDownTranspose(this.numbers);
+                    this.numbers = Transpose.upLeftTranspose(this.numbers);
                 }
                 break;
             case "right":
-                this.leftRightTranspose();
+                this.numbers = Transpose.leftRightTranspose(this.numbers);
                 break;
             default:
                 break;
