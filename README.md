@@ -1,4 +1,5 @@
 [![codebeat badge](https://codebeat.co/badges/95aaeb6b-446a-4c1e-87b2-c7b2092a58ab)](https://codebeat.co/projects/github-com-shenjiahuan-2048-react-master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c163b9e35d46431787f3abe04c36df40)](https://www.codacy.com/app/ShenJiahuan/2048-React?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ShenJiahuan/2048-React&amp;utm_campaign=Badge_Grade)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
