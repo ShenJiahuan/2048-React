@@ -3,6 +3,7 @@ import "./App.css";
 import Grid from "./Grid";
 import NumberTable from "./NumberTable";
 import Score from "./Score";
+import Hover from "./Hover";
 
 class App extends Component {
     constructor(props) {
@@ -100,6 +101,7 @@ class App extends Component {
             <div>
                 <Score score={this.state.grid.score}/>
                 <NumberTable numbers={this.state.grid.numbers}/>
+                <Hover alive={this.state.grid.alive()}/>
             </div>
         );
     }

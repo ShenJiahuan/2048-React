@@ -37,6 +37,12 @@
     .num-1024, .num-2048 {
         font-size: 4vw;
     }
+    .dead {
+        font-size: 10vw;
+        width: 74vw;
+        height: 74vw;
+        top: 16vw;
+    }
 }
 @media screen and (orientation:landscape) {
     #root {
@@ -75,6 +81,12 @@
     .num-1024, .num-2048 {
         font-size: 4vh;
     }
+    .dead {
+        font-size: 10vh;
+        width: 74vh;
+        height: 74vh;
+        top: 16vh;
+    }
 }
 
 
@@ -87,6 +99,7 @@ html, body {
     left: 0;
     right: 0;
     font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
 }
 
 #root {
@@ -113,7 +126,6 @@ html, body {
     vertical-align: middle;
     text-align: center;
     border-radius: 10%;
-    font-weight: bold;
 }
 
 
@@ -221,10 +233,8 @@ html, body {
 #score-board {
     display: table;
     text-align: center;
-
     background-color: rgb(173, 157, 143);
     border-radius: 10%;
-    font-weight: bold;
 }
 
 #score-info {
@@ -245,4 +255,40 @@ html, body {
 #score-info > div, #score-value > div {
     display: table-cell;
     vertical-align: middle;
+}
+
+.alive {
+    display: none;
+}
+
+.dead {
+    display: table;
+    position: absolute;
+    text-align: center;
+    background-color: rgba(231, 194, 80, 0.4);
+}
+
+.dead > div {
+    display: table-cell;
+    color: rgb(80, 80, 80);
+
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2%;
+    animation: dead-appear 0.3s ease-out normal;
+}
+
+@-webkit-keyframes dead-appear {
+    0% {
+        transform: scale(0.2);
+    }
+    80% {
+        transform: scale(1);
+    }
+    90% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
