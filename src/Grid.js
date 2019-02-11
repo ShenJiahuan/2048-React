@@ -124,33 +124,33 @@ class Grid extends Component {
         }
     }
 
-    action(direction) {
-        this.resetIsNew();
-        let isChanged;
+    transpose(direction, reset) {
         switch (direction) {
             case "up":
                 this.upLeftTranspose();
-                isChanged = this.leftMoveAndMerge();
-                this.upLeftTranspose();
                 break;
             case "down":
-                this.upDownTranspose();
-                this.upLeftTranspose();
-                isChanged = this.leftMoveAndMerge();
-                this.upLeftTranspose();
-                this.upDownTranspose();
-                break;
-            case "left":
-                isChanged = this.leftMoveAndMerge();
+                if (reset) {
+                    this.upLeftTranspose();
+                    this.upDownTranspose();
+                } else {
+                    this.upDownTranspose();
+                    this.upLeftTranspose();
+                }
                 break;
             case "right":
-                this.leftRightTranspose();
-                isChanged = this.leftMoveAndMerge();
                 this.leftRightTranspose();
                 break;
             default:
                 break;
         }
+    }
+
+    action(direction) {
+        this.resetIsNew();
+        this.transpose(direction, false);
+        let isChanged = this.leftMoveAndMerge();
+        this.transpose(direction, true);
         return isChanged;
     }
 
