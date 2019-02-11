@@ -151,7 +151,6 @@ class Grid extends Component {
             default:
                 break;
         }
-        console.log(this.alive());
         return isChanged;
     }
 
