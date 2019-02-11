@@ -121,8 +121,8 @@ class Grid extends Component {
                     number[1] = "none";
                 }
                 return number;
-            })
-        })
+            });
+        });
     }
 
     transpose(direction, reset) {
