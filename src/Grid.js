@@ -66,24 +66,20 @@ class Grid extends Component {
 
     move(rowNum) {
         let isMoved = false;
-        let jInc = true;
-        for (let j = 0; j < 3;) {
+        let nextj = 0;
+        for (let j = 0; j < 3; j = nextj) {
+            nextj = j + 1;
             if (this.numbers[rowNum][j] !== "") {
-                ++j;
                 continue;
             }
-            jInc = true;
             for (let k = j; k < 3; ++k) {
                 this.numbers[rowNum][k] = this.numbers[rowNum][k + 1];
                 if (this.numbers[rowNum][k]) {
                     isMoved = true;
-                    jInc = false;
+                    nextj = j;
                 }
             }
             this.numbers[rowNum][3] = "";
-            if (jInc) {
-                ++j;
-            }
         }
         return isMoved;
     }
@@ -123,6 +119,7 @@ class Grid extends Component {
                 return number;
             });
         });
+        console.log(this.numbers);
     }
 
     transpose(direction, reset) {
