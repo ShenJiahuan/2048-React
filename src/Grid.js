@@ -1,6 +1,6 @@
 import {Component} from "react";
 import "./App.css";
-import * as Transpose from "./Transpose"
+import * as Transpose from "./Transpose";
 
 class Grid extends Component {
     constructor(props) {
