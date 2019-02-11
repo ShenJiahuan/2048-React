@@ -266,15 +266,14 @@ html, body {
     position: absolute;
     text-align: center;
     background-color: rgba(231, 194, 80, 0.4);
+    border-radius: 2%;
 }
 
 .dead > div {
     display: table-cell;
     color: rgb(80, 80, 80);
-
     text-align: center;
     vertical-align: middle;
-    border-radius: 2%;
     animation: dead-appear 0.3s ease-out normal;
 }
 
