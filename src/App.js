@@ -95,12 +95,16 @@ class App extends Component {
         e.preventDefault();
     }
 
+    restart() {
+        this.setState({grid: new Grid()});
+    }
+
     render() {
         return (
             <div>
                 <Score score={this.state.grid.score}/>
                 <NumberTable numbers={this.state.grid.numbers}/>
-                <Hover alive={this.state.grid.alive()}/>
+                <Hover alive={this.state.grid.alive()} restart={this.restart.bind(this)}/>
             </div>
         );
     }
