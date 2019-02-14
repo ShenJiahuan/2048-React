@@ -64,7 +64,6 @@ class App extends Component {
     onTouchMove(e) {
         let [X, Y] = App.getPosDuringEvent(e);
         this.setState({endX: X, endY: Y});
-        this.setState({endX: X, endY: Y});
         e.preventDefault();
     }
 
