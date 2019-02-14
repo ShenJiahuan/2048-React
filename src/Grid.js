@@ -91,7 +91,6 @@ class Grid extends Component {
                 return number;
             });
         });
-        console.log(this.numbers);
     }
 
     transpose(direction, reset) {
