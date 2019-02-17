@@ -8,7 +8,7 @@ import Hover from "./Hover";
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {grid: new Grid(), beginX: 0, beginY: 0, endX: 0, endY: 0, enableSwipe: false};
+        this.state = {grid: new Grid(), best: 0, beginX: 0, beginY: 0, endX: 0, endY: 0, enableSwipe: false};
     }
 
     static getPosDuringEvent(e) {
@@ -52,6 +52,7 @@ class App extends Component {
             grid.addValue();
         }
         this.setState({grid: grid});
+        this.updateBest();
         e.preventDefault();
     }
 
@@ -87,6 +88,7 @@ class App extends Component {
             }
         }
         this.setState({grid: grid, enableSwipe: false});
+        this.updateBest();
         e.preventDefault();
     }
 
@@ -99,10 +101,19 @@ class App extends Component {
         this.setState({grid: new Grid()});
     }
 
+    updateBest() {
+        if (this.state.grid.score > this.state.best) {
+            this.setState({best: this.state.grid.score});
+        }
+    }
+
     render() {
         return (
             <div>
-                <Score score={this.state.grid.score}/>
+                <div id={"score-group"}>
+                    <Score info={"SCORE"} score={this.state.grid.score}/>
+                    <Score info={"BEST"} score={this.state.best}/>
+                </div>
                 <NumberTable numbers={this.state.grid.numbers}/>
                 <Hover alive={this.state.grid.alive()} restart={this.restart.bind(this)}/>
             </div>

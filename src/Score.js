@@ -4,9 +4,11 @@ import "./App.css";
 class Score extends Component {
     render() {
         return (
-            <div id="score-board">
-                <div id="score-info"><div>SCORE</div></div>
-                <div id="score-value"><div>{this.props.score}</div></div>
+            <div>
+                <div class="score-board" id={this.props.info === "SCORE" ? "score-current": "score-best"}>
+                    <div class="score-info"><div>{this.props.info}</div></div>
+                    <div class="score-value"><div>{this.props.score}</div></div>
+                </div>
             </div>
         );
     }

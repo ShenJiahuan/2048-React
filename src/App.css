@@ -14,15 +14,15 @@
     .number-cell {
         width: 16vw;
     }
-    #score-board {
+    .score-board {
         width: 16vw;
         height: 12vw;
         margin: 2vw;
     }
-    #score-info {
+    .score-info {
         font-size: 3vw;
     }
-    #score-value {
+    .score-value {
         font-size: 4vw;
     }
     .num-2, .num-4, .num-8 {
@@ -43,6 +43,10 @@
         height: 74vw;
         top: 16vw;
     }
+    #restart > button > img {
+        width: 10vw;
+        height: 10vw;
+    }
 }
 @media screen and (orientation:landscape) {
     #root {
@@ -58,15 +62,15 @@
     .number-cell {
         width: 16vh;
     }
-    #score-board {
+    .score-board {
         width: 16vh;
         height: 12vh;
         margin: 2vh;
     }
-    #score-info {
+    .score-info {
         font-size: 3vh;
     }
-    #score-value {
+    .score-value {
         font-size: 4vh;
     }
     .num-2, .num-4, .num-8 {
@@ -86,6 +90,10 @@
         width: 74vh;
         height: 74vh;
         top: 16vh;
+    }
+    #restart > button > img {
+        width: 10vh;
+        height: 10vh;
     }
 }
 
@@ -230,21 +238,21 @@ html, body {
 
 }
 
-#score-board {
+.score-board {
     display: table;
     text-align: center;
     background-color: rgb(173, 157, 143);
     border-radius: 10%;
 }
 
-#score-info {
+.score-info {
     display: table-row;
     width: 100%;
     height: 40%;
     color: rgb(233, 221, 209);
 }
 
-#score-value {
+.score-value {
     display: table-row;
     width: 100%;
     height: 60%;
@@ -252,7 +260,7 @@ html, body {
     color: rgb(255, 255, 255);
 }
 
-#score-info > div, #score-value > div {
+.score-info > div, .score-value > div {
     display: table-cell;
     vertical-align: middle;
 }
@@ -267,14 +275,35 @@ html, body {
     text-align: center;
     background-color: rgba(231, 194, 80, 0.4);
     border-radius: 2%;
+    animation: dead-appear 0.3s ease-out normal;
 }
 
-.dead > div {
+#game-over > div, #restart > button {
     display: table-cell;
-    color: rgb(80, 80, 80);
-    text-align: center;
     vertical-align: middle;
-    animation: dead-appear 0.3s ease-out normal;
+}
+
+#game-over {
+    color: rgb(80, 80, 80);
+}
+
+#game-over, #restart {
+    display: table-row;
+    width: 100%;
+}
+
+#game-over {
+    height: 60%;
+}
+
+#restart {
+    height: 40%;
+}
+
+#restart > button {
+    background-color: transparent;
+    border: none;
+
 }
 
 @-webkit-keyframes dead-appear {
@@ -290,4 +319,12 @@ html, body {
     100% {
         transform: scale(1);
     }
+}
+
+#score-group {
+    display: table-row;
+}
+
+#score-group > div {
+    display: table-cell;
 }
